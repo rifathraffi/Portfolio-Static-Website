@@ -42,6 +42,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   <script src="https://kit.fontawesome.com/b387c96519.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 
@@ -260,7 +261,7 @@
 
         <h3>Contact</h3>
         <img src="assets/img/lines.svg" class="img-lines" alt="lines">
-        <form>
+        <form id="submit-form" action="">
           <div class="row">
             <div class="col-sm-6">
               <input type="text" name="name" class="form-control mt-x-0" placeholder="Name" required>
@@ -445,6 +446,25 @@
     src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-progressbar/0.9.0/bootstrap-progressbar.min.js"></script>
   <script src="assets/js/jquery.countTo.min.js"></script>
   <script src="assets/js/script.js"></script>
+  <script>
+    $("#submit-form").submit((e)=>{
+        e.preventDefault()
+        $.ajax({
+            url:"https://script.google.com/macros/s/AKfycbwB6iyxGCbmLrg5T-wGonC3pwECXV2oUgkV-K_HZqK7JEnlEVsDGgAuXnKTTubsFLD_Qw/exec",
+            data:$("#submit-form").serialize(),
+            method:"post",
+            success:function (response){
+                alert("Form submitted successfully")
+                window.location.reload()
+                //window.location.href="https://google.com"
+            },
+            error:function (err){
+                alert("Something Error")
+
+            }
+        })
+    })
+</script>
 
 </body>
 
